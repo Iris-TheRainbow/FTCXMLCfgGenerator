@@ -1,3 +1,14 @@
 body{
     background-color: lightslategrey;
 }
+body .half{
+    width: 50%;
+    float: left;
+    margin: 0;
+}
+xml{
+    margin: 20px;
+    border-color: darkcyan;
+    border-width: 3px;
+    border-radius: 20px;
+}

@@ -22,11 +22,11 @@ function generate(hubs, webcams){
         }
         for (var digital of hub.digital){
             console.log(digital)
-            out += `             <DigitalDevice name="` + digital.name +`" port="` + digital.port + `" />\n`
+            out += `             <`+ digital.type+ ` name="` + digital.name +`" port="` + digital.port + `" />\n`
         }
         for (var analog of hub.analog){
             console.log(analog)
-            out += `             <AnalogInput name="` + analog.name +`" port="` + analog.port + `" />\n`
+            out += `             <`+ analog.type+ ` name="` + analog.name +`" port="` + analog.port + `" />\n`
         }
         out += `        </LynxModule>\n`
     }

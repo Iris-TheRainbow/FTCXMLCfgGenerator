@@ -47,41 +47,41 @@ class Webcam{
 }
 
 
+const analogType = {
+    OpticalDistanceSensor: "OpticalDistanceSensor",
+    MRAnalogTouchSensor: "ModernRoboticsAnalogTouchSensor",
+    AnalogDevice: "AnalogDevice"
+}
 
 class Analog{
-    type = {
-        OpticalDistanceSensor: "OpticalDistanceSensor",
-        MRAnalogTouchSensor: "ModernRoboticsAnalogTouchSensor"
-    }
-
     constructor(type, name, port){
         this.setType(type);
         this.name = name;
         this.port = port;
     }
     setType(type){
-        if (Object.values(this.type).includes(type)){
+        if (Object.values(analogType).includes(type)){
             this.type = type
         }else{
             throw TypeError;
         }
     }
+}
+
+const digitalType = {
+    REVTouch: "RevTouchSensor",
+    LED: "Led",
+    DigitalDevice: "DigitalDevice"
 }
 
 class Digital{
-    type = {
-        REVTouch: "RevTouchSensor",
-        LED: "Led",
-        DigitalDevice: "DigitalDevice"
-    }
-
     constructor(type, name, port){
         this.setType(type);
         this.name = name;
         this.port = port;
     }
     setType(type){
-        if (Object.values(this.type).includes(type)){
+        if (Object.values(digitalType).includes(type)){
             this.type = type
         }else{
             throw TypeError;
@@ -89,22 +89,21 @@ class Digital{
     }
 }
 
+const i2cType = {
+    AdafruitBNO055: "AdafruitBNO055IMU",
+    HuskyLens: "HuskyLens",
+    OctoQuad: "OctoQuadFTC",
+    NavXMicro: "KauaiLabsNavxMicro",
+    MaxSonar: "MaxSonarI2CXL",
+    MRCompas: "ModernRoboticsI2cCompassSensor",
+    MRRangeSensor: "ModernRoboticsI2cRangeSensor",
+    REV2MDistanceSensor: "REV_VL53L0X_RANGE_SENSOR",
+    REV9AxisIMU: "RevExternalImu",
+    REVColorSensorv3: "RevColorSensorV3",
+    SparkFunLEDStick: "QWIIC_LED_STICK",
+    SparkFunOTOS: "SparkFunOTOS"
+}
 class I2c{
-    type = {
-        AdafruitBNO055: "AdafruitBNO055IMU",
-        HuskyLens: "HuskyLens",
-        OctoQuad: "OctoQuadFTC",
-        NavXMicro: "KauaiLabsNavxMicro",
-        MaxSonar: "MaxSonarI2CXL",
-        MRCompas: "ModernRoboticsI2cCompassSensor",
-        MRRangeSensor: "ModernRoboticsI2cRangeSensor",
-        REV2MDistanceSensor: "REV_VL53L0X_RANGE_SENSOR",
-        REV9AxisIMU: "RevExternalImu",
-        REVColorSensorv3: "RevColorSensorV3",
-        SparkFunLEDStick: "QWIIC_LED_STICK",
-        SparkFunOTOS: "SparkFunOTOS"
-    }
-    
     constructor(type, name, port, bus){
         this.setType(type);
         this.name = name;
@@ -112,59 +111,60 @@ class I2c{
         this.bus = bus;
     }
     setType(type){
-        if (Object.values(this.type).includes(type)){
+        if (Object.values(i2cType).includes(type)){
             this.type = type
         }else{
             throw TypeError;
         }
     }
 }
+
+motorType = {
+    GoBILDA5201: "goBILDA5201SeriesMotor", 
+    GoBILDA5202_3_4:"goBILDA5202SeriesMotor",
+    Matrix12v: "Matrix12vMotor",
+    NeveRest3_7V1: "NeveRest3.7v1Gearmotor",
+    NeveRest20: "NeveRest20Gearmotor",
+    NeveRest40: "NeveRest40Gearmotor",
+    NeverRest60: "NeveRest60Gearmotor",
+    REV20HDHex: "RevRobotics20HDHexMotor",
+    REV40HDHex: "RevRobotics40HDHexMotor",
+    REVCoreHex: "RevRoboticsCoreHexMotor",
+    REVUltraplanetary:  "RevRoboticsUltraplanetaryHDHexMotor",
+    Tetrix: "TetrixMotor",
+    Generic: "Motor"
+}
+
 class Motor{
-    type = {
-        GoBILDA5201: "goBILDA5201SeriesMotor", 
-        GoBILDA5202_3_4:"goBILDA5202SeriesMotor",
-        Matrix12v: "Matrix12vMotor",
-        NeveRest3_7V1: "NeveRest3.7v1Gearmotor",
-        NeveRest20: "NeveRest20Gearmotor",
-        NeveRest40: "NeveRest40Gearmotor",
-        NeverRest60: "NeveRest60Gearmotor",
-        REV20HDHex: "RevRobotics20HDHexMotor",
-        REV40HDHex: "RevRobotics40HDHexMotor",
-        REVCoreHex: "RevRoboticsCoreHexMotor",
-        REVUltraplanetary:  "RevRoboticsUltraplanetaryHDHexMotor",
-        Tetrix: "TetrixMotor",
-        Generic: "Motor"
-    }
-    
     constructor(type, name, port){
         this.setType(type);
         this.name = name;
         this.port = port;
     }
     setType(type){
-        if (Object.values(this.type).includes(type)){
+        if (Object.values(motorType).includes(type)){
             this.type = type
         }else{
             throw TypeError;
         }
     }
+}
+
+const servoType = {
+    CRServo: "ContinuousRotationServo",
+    Servo: "Servo",
+    SPARKMini: "RevSPARKMini",
+    REVBlinkin: "RevBlinkinLedDriver"
 }
 
 class Servo{
-    type = {
-        CRServo: "ContinuousRotationServo",
-        Servo: "Servo",
-        SPARKMini: "RevSPARKMini",
-        REVBlinkin: "RevBlinkinLedDriver"
-    }
-
     constructor(type, name, port){
         this.setType(type);
         this.name = name;
         this.port = port;
     }
     setType(type){
-        if (Object.values(this.type).includes(type)){
+        if (Object.values(servoType).includes(type)){
             this.type = type
         }else{
             throw TypeError;

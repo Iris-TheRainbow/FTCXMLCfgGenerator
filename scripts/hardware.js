@@ -45,24 +45,25 @@ class Webcam{
         this.serial = serial;
     }
 }
-const NameError =  new Error("This DeviceType does not contain a device with that name");
+
 
 
 class Analog{
-    names = [
-        "OpticalDistanceSensor",
-        "ModernRoboticsAnalogTouchSensor"
-    ]
-    constructor(name, port){
-        this.setName(name);
-        this.port = port;
+    type = {
+        OpticalDistanceSensor: "OpticalDistanceSensor",
+        MRAnalogTouchSensor: "ModernRoboticsAnalogTouchSensor"
     }
 
-    setName(name){
-        if (name in this.names){
-            this.name = name
+    constructor(type, name, port){
+        this.setType(type);
+        this.name = name;
+        this.port = port;
+    }
+    setType(type){
+        if (Object.values(this.type).includes(type)){
+            this.type = type
         }else{
-            throw NameError;
+            throw TypeError;
         }
     }
 }
@@ -74,16 +75,16 @@ class Digital{
         "DigitalDevice"
     ]
 
-    constructor(name, port){
-        this.setName(name);
+    constructor(type, name, port){
+        this.setType(type);
+        this.name = name;
         this.port = port;
     }
-
-    setName(name){
-        if (name in this.names){
-            this.name = name
+    setType(type){
+        if (Object.values(this.type).includes(type)){
+            this.type = type
         }else{
-            throw NameError;
+            throw TypeError;
         }
     }
 }
@@ -105,70 +106,68 @@ class I2c{
     ]
     
     constructor(type, name, port, bus){
-        this.type = type;
-        this.setName(name);
+        this.setType(type);
+        this.name = name;
         this.port = port;
         this.bus = bus;
     }
-    
-    setName(name){
-        if (name in this.names){
-            this.name = name
+    setType(type){
+        if (Object.values(this.type).includes(type)){
+            this.type = type
         }else{
-            throw NameError;
+            throw TypeError;
         }
     }
 }
 class Motor{
-    names = [
-        "goBILDA5201SeriesMotor", 
-        "goBILDA5202SeriesMotor",
-        "Matrix12vMotor",
-        "NeveRest3.7v1Gearmotor",
-        "NeveRest20Gearmotor",
-        "NeveRest40Gearmotor",
-        "NeveRest60Gearmotor",
-        "NeveRest60Gearmotor",
-        "RevRobotics20HDHexMotor",
-        "RevRobotics40HDHexMotor",
-        "RevRoboticsCoreHexMotor",
-        "RevRoboticsUltraplanetaryHDHexMotor",
-        "TetrixMotor",
-        "Motor"
-    ]
+    type = {
+        GoBILDA5201: "goBILDA5201SeriesMotor", 
+        GoBILDA5202_3_4:"goBILDA5202SeriesMotor",
+        Matrix12v: "Matrix12vMotor",
+        NeveRest3_7V1: "NeveRest3.7v1Gearmotor",
+        NeveRest20: "NeveRest20Gearmotor",
+        NeveRest40: "NeveRest40Gearmotor",
+        NeverRest60: "NeveRest60Gearmotor",
+        REV20HDHex: "RevRobotics20HDHexMotor",
+        REV40HDHex: "RevRobotics40HDHexMotor",
+        REVCoreHex: "RevRoboticsCoreHexMotor",
+        REVUltraplanetary:  "RevRoboticsUltraplanetaryHDHexMotor",
+        Tetrix: "TetrixMotor",
+        Generic: "Motor"
+    }
     
     constructor(type, name, port){
-        this.type = type;
-        this.setName(name);
+        this.setType(type);
+        this.name = name;
         this.port = port;
     }
-    setName(name){
-        if (name in this.names){
-            this.name = name
+    setType(type){
+        if (Object.values(this.type).includes(type)){
+            this.type = type
         }else{
-            throw NameError;
+            throw TypeError;
         }
     }
 }
 
 class Servo{
-    Names = [
-        "ContinuousRotationServo",
-        "Servo",
-        "RevSPARKMini",
-        "RevBlinkinLedDriver"
-    ]
+    typ = {
+        CRServo: "ContinuousRotationServo",
+        Servo: "Servo",
+        SPARKMini: "RevSPARKMini",
+        REVBlinkin: "RevBlinkinLedDriver"
+    }
 
     constructor(type, name, port){
-        this.type = type;
-        this.setName(name);
+        this.setType(type);
+        this.name = name;
         this.port = port;
     }
-    setName(name){
-        if (name in this.names){
-            this.name = name
+    setType(type){
+        if (Object.values(this.type).includes(type)){
+            this.type = type
         }else{
-            throw NameError;
+            throw TypeError;
         }
     }
 }

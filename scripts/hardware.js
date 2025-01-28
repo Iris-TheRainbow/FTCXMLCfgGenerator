@@ -69,11 +69,11 @@ class Analog{
 }
 
 class Digital{
-    names = [
-        "RevTouchSensor",
-        "Led",
-        "DigitalDevice"
-    ]
+    type = {
+        REVTouch: "RevTouchSensor",
+        LED: "Led",
+        DigitalDevice: "DigitalDevice"
+    }
 
     constructor(type, name, port){
         this.setType(type);
@@ -90,20 +90,20 @@ class Digital{
 }
 
 class I2c{
-    name = [
-        "AdafruitBNO055IMU",
-        "HuskyLens",
-        "OctoQuadFTC",
-        "KauaiLabsNavxMicro",
-        "MaxSonarI2CXL",
-        "ModernRoboticsI2cCompassSensor",
-        "ModernRoboticsI2cRangeSensor",
-        "REV_VL53L0X_RANGE_SENSOR",
-        "RevExternalImu",
-        "RevColorSensorV3",
-        "QWIIC_LED_STICK",
-        "SparkFunOTOS"
-    ]
+    type = {
+        AdafruitBNO055: "AdafruitBNO055IMU",
+        HuskyLens: "HuskyLens",
+        OctoQuad: "OctoQuadFTC",
+        NavXMicro: "KauaiLabsNavxMicro",
+        MaxSonar: "MaxSonarI2CXL",
+        MRCompas: "ModernRoboticsI2cCompassSensor",
+        MRRangeSensor: "ModernRoboticsI2cRangeSensor",
+        REV2MDistanceSensor: "REV_VL53L0X_RANGE_SENSOR",
+        REV9AxisIMU: "RevExternalImu",
+        REVColorSensorv3: "RevColorSensorV3",
+        SparkFunLEDStick: "QWIIC_LED_STICK",
+        SparkFunOTOS: "SparkFunOTOS"
+    }
     
     constructor(type, name, port, bus){
         this.setType(type);
@@ -151,7 +151,7 @@ class Motor{
 }
 
 class Servo{
-    typ = {
+    type = {
         CRServo: "ContinuousRotationServo",
         Servo: "Servo",
         SPARKMini: "RevSPARKMini",

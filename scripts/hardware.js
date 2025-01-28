@@ -45,3 +45,130 @@ class Webcam{
         this.serial = serial;
     }
 }
+const NameError =  new Error("This DeviceType does not contain a device with that name");
+
+
+class Analog{
+    names = [
+        "OpticalDistanceSensor",
+        "ModernRoboticsAnalogTouchSensor"
+    ]
+    constructor(name, port){
+        this.setName(name);
+        this.port = port;
+    }
+
+    setName(name){
+        if (name in this.names){
+            this.name = name
+        }else{
+            throw NameError;
+        }
+    }
+}
+
+class Digital{
+    names = [
+        "RevTouchSensor",
+        "Led",
+        "DigitalDevice"
+    ]
+
+    constructor(name, port){
+        this.setName(name);
+        this.port = port;
+    }
+
+    setName(name){
+        if (name in this.names){
+            this.name = name
+        }else{
+            throw NameError;
+        }
+    }
+}
+
+class I2c{
+    name = [
+        "AdafruitBNO055IMU",
+        "HuskyLens",
+        "OctoQuadFTC",
+        "KauaiLabsNavxMicro",
+        "MaxSonarI2CXL",
+        "ModernRoboticsI2cCompassSensor",
+        "ModernRoboticsI2cRangeSensor",
+        "REV_VL53L0X_RANGE_SENSOR",
+        "RevExternalImu",
+        "RevColorSensorV3",
+        "QWIIC_LED_STICK",
+        "SparkFunOTOS"
+    ]
+    
+    constructor(type, name, port, bus){
+        this.type = type;
+        this.setName(name);
+        this.port = port;
+        this.bus = bus;
+    }
+    
+    setName(name){
+        if (name in this.names){
+            this.name = name
+        }else{
+            throw NameError;
+        }
+    }
+}
+class Motor{
+    names = [
+        "goBILDA5201SeriesMotor", 
+        "goBILDA5202SeriesMotor",
+        "Matrix12vMotor",
+        "NeveRest3.7v1Gearmotor",
+        "NeveRest20Gearmotor",
+        "NeveRest40Gearmotor",
+        "NeveRest60Gearmotor",
+        "NeveRest60Gearmotor",
+        "RevRobotics20HDHexMotor",
+        "RevRobotics40HDHexMotor",
+        "RevRoboticsCoreHexMotor",
+        "RevRoboticsUltraplanetaryHDHexMotor",
+        "TetrixMotor",
+        "Motor"
+    ]
+    
+    constructor(type, name, port){
+        this.type = type;
+        this.setName(name);
+        this.port = port;
+    }
+    setName(name){
+        if (name in this.names){
+            this.name = name
+        }else{
+            throw NameError;
+        }
+    }
+}
+
+class Servo{
+    Names = [
+        "ContinuousRotationServo",
+        "Servo",
+        "RevSPARKMini",
+        "RevBlinkinLedDriver"
+    ]
+
+    constructor(type, name, port){
+        this.type = type;
+        this.setName(name);
+        this.port = port;
+    }
+    setName(name){
+        if (name in this.names){
+            this.name = name
+        }else{
+            throw NameError;
+        }
+    }
+}

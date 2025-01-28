@@ -1,83 +1,3 @@
-class hub{
-    constructor(type){
-        this.type = type;
-        this.motors = [];
-        this.servos = [];
-        this.i2c = [];
-        this.digital = [];
-        this.analog = [];
-    }
-
-    addChild(){
-        if (this.type = "chub"){
-            return;
-        }
-        if (this.type = "exhub"){
-            return;
-        }
-        throw TypeError;
-    }
-
-    addMotor(type, name, port){
-        this.motors.push(new Motor(type, name, port));
-    }
-
-    addServo(type, name, port){
-        this.servos.push(new Servo(type, name, port));
-    }   
-
-    addI2c(type, name, port, bus){
-        this.i2c.push(new I2c(type, name, port, bus));
-    }
-
-    addDigital(name, port){
-        this.digital.push(new Digital(name, port));
-    }
-
-    addAnalog(name, port){
-        this.analog.push(new Analog(name, port));
-    }
-}
-
-class Motor{
-    constructor(type, name, port){
-        this.type = type;
-        this.name = name;
-        this.port = port;
-    }
-}
-
-class Servo{
-    constructor(type, name, port){
-        this.type = type;
-        this.name = name;
-        this.port = port;
-    }
-}
-
-class I2c{
-    constructor(type, name, port, bus){
-        this.type = type;
-        this.name = name;
-        this.port = port;
-        this.bus = bus;
-    }
-}
-
-class Digital{
-    constructor(name, port){
-        this.name = name;
-        this.port = port;
-    }
-}
-
-class Analog{
-    constructor(name, port){
-        this.name = name;
-        this.port = port;
-    }
-}
-
 function generate(hubs, webcams){
     let out = `<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <Robot type="FirstInspires-FTC">
@@ -112,7 +32,7 @@ function generate(hubs, webcams){
     }
     out += `    </LynxUsbDevice>\n`
     for (const webcam of webcams){
-        out += `<Webcam name="` + webcam.name + `" serialNumber="` + webcam.serial + `" />\n`
+        out += `    <Webcam name="` + webcam.name + `" serialNumber="` + webcam.serial + `" />\n`
     }
     out += `</Robot>\n`
     return out.split('\n')

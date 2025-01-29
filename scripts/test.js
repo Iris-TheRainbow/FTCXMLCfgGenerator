@@ -8,7 +8,7 @@ function test(){
     hub1.addDigital(digitalType.DigitalDevice, "button", 0);
     let hub2 = new Hub("exhub");
     hub2.addMotor(motorType.GoBILDA5202_3_4, "slides", 0);
-    let out = generate([hub1, hub2], [new Webcam("webcam", 0)])
+    let out = generate([hub1, new Hub("exhub")], [new Webcam("webcam", 0)])
     let download = ""
     for (var line of out){
         console.log(line)

@@ -6,9 +6,20 @@ body .half{
     float: left;
     margin: 0;
 }
-xml{
+.xml{
     margin: 20px;
-    border-color: darkcyan;
-    border-width: 3px;
+    border: 3px solid teal;
+    height: calc(100% - 80px);
     border-radius: 20px;
+    background-color: darkslategrey;
+    padding: 20px;
+    font-size: 1rem;
+    width: auto;
+}
+.xml p{
+    color: azure;
+    font-size: 1rem;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
 }

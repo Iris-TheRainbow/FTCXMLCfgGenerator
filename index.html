@@ -4,14 +4,15 @@
         <script src="scripts/test.js"></script>
         <script src="scripts/download.js"></script>
         <script src="scripts/hardware.js"></script>
+        <script src="scripts/global.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
+    <body onload="load()">
         <div class="half">
             <div class="xml">
                 <div>
-                    <span id="xml"></span>
-                    xml
+                    <pre><p><span id="xmlOut"></span></p></pre>
+                    <button onclick="downloadXML()">download</button>
                 </div>
             </div>
         </div> 

@@ -4,7 +4,7 @@ function generate(hubs, webcams){
     <LynxUsbDevice name="Control Hub Portal" serialNumber="(embedded)" parentModuleAddress="173">\n`
     for (var hub of hubs){
         if (hub.type == 'exhub'){
-            out += `        <LynxModule name="Expansion Hub 1" port="1">\n`
+            out += `        <LynxModule name="Expansion Hub ` + (hubs.indexOf(hub)) +  `" port="1">\n`
         }else{
             out +=`         <LynxModule name="Control Hub" port="173">\n`
         }
@@ -35,5 +35,10 @@ function generate(hubs, webcams){
         out += `    <Webcam name="` + webcam.name + `" serialNumber="` + webcam.serial + `" />\n`
     }
     out += `</Robot>\n`
-    return out.split('\n')
+    let output = ""
+    for (var line of out.split('\n')){
+        console.log(line)
+        output += line + "\n"
+    }
+    return output
 }

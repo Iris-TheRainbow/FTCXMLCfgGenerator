@@ -79,6 +79,9 @@ class Analog{
             throw TypeError;
         }
     }
+    setType(type){
+        this.type = type
+    }
 }
 
 const digitalType = {

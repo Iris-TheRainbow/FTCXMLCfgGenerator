@@ -1,6 +1,9 @@
 class StateObj {
     activeHubIndex = null;
     activeHub = null;
+    activeList = null;
+    activeListIndex = null;
+    activeType = null;
     constructor() {
         this.hubs = []
         this.webcams = []
@@ -29,10 +32,18 @@ class StateObj {
         console.log(this.activeHubIndex)
         update()
     }
+    setActiveList(list){
+        this.activeList = list
+    }
+    setActiveListIndex(index){
+        this.activeListIndex = index
+    }
+    setActiveType(type){
+        this.activeType = type;
+    }
     updateActiveHub(hub) {
         this.hubs[this.activeHubIndex] = hub
         update()
-
     }
 }
 
@@ -60,54 +71,48 @@ function generateHubList() {
     document.getElementById("hubList").innerHTML = out
 }
 function editActiveMotor(index) {
-    showEdit()
-    document.getElementById("type").innerText = "motor"
     hub = state.getActiveHub()
-    motor = hub.motors[index]
-    hub.motors[index] = motor
-    state.updateActiveHub(hub)
+    state.setActiveList(hub.motors)
+    state.setActiveListIndex(index)
+    state.setActiveType(motorType)
+    document.getElementById("caption").innerText = "Edit motor: " + hub.motors[index].name
+    showEdit()
 }
+
 function editActiveServo(index) {
-    showEdit()
-    document.getElementById("type").innerText = "servo"
     hub = state.getActiveHub()
-    servo = hub.servos[index]
-    console.log(servo)
-    hub.servos[index] = servo
-    state.updateActiveHub(hub)
+    state.setActiveList(hub.servos)
+    state.setActiveListIndex(index)
+    state.setActiveType(servoType)
+    document.getElementById("caption").innerText = "Edit servo: " + hub.servos[index].name
+    showEdit()
 }
+
 function editActiveI2C(index) {
-    showEdit()
-    document.getElementById("type").innerText = "I&sup2;C"
     hub = state.getActiveHub()
-    i2c = hub.i2c[index]
-    console.log(i2c)
-    hub.i2c[index] = i2c
-    state.updateActiveHub(hub)
+    state.setActiveList(hub.i2c)
+    state.setActiveListIndex(index)
+    state.setActiveType(i2cType)
+    document.getElementById("caption").innerHTML = "Edit I&sup2;c: " + hub.i2c[index].name
+    showEdit()
 }
 function editActiveDigital(index) {
-    showEdit()
-    document.getElementById("type").innerText = "digital device"
     hub = state.getActiveHub()
-    digital = hub.digital[index]
-    console.log(digital)
-    hub.digital[index] = digital
-    state.updateActiveHub(hub)
+    state.setActiveList(hub.digital)
+    state.setActiveListIndex(index)
+    state.setActiveType(digitalType)
+    document.getElementById("caption").innerText = "Edit digital device: " + hub.digital[index].name
+    showEdit()
 }
 function editActiveAnalog(index) {
-    showEdit()
-    document.getElementById("type").innerText = "analog device"
     hub = state.getActiveHub()
-    analog = hub.analog[index]
-    console.log(analog)
-    hub.analog[index] = analog
-    state.updateActiveHub(hub)
+    state.setActiveList(hub.Analog)
+    state.setActiveListIndex(index)
+    state.setActiveType(analogType)
+    document.getElementById("caption").innerText = "Edit analog device: " + hub.analog[index].name
+    showEdit()
 }
-function editContent(enumobj, name, port){
-    let out = ""
-    
-    document.getElementById("editContent").innerHTML = out
-}
+
 function generateHardwareList(id, list, func) {
     let out = ""
     for (var index in list) {
@@ -118,8 +123,41 @@ function generateHardwareList(id, list, func) {
     }
     document.getElementById(id).innerHTML = out
 }
+function setActiveType(type){
+    console.log(state.activeList[state.activeListIndex])
+    console.log(type)
+    hardware = state.activeList[state.activeListIndex]
+    hardware.setType(type);
+    document.getElementById("typeButton").innerHTML  = `<button class="dropbtn">` + state.activeList[state.activeListIndex].type + `</button>`
+}
+
+function applyChange(){
+    state.updateActiveHub(hub)
+    closeEdit()
+}
+
 function showEdit() {
     document.getElementById("edit").style.display = "block"
+    out =`
+    <div>
+        <div>
+            <div class="dropdown">
+                <span id="typeButton"></span>
+                <div class="dropdown-content">`
+                 for (var item in Object.entries(state.activeType)){
+                    let name = Object.entries(state.activeType)[item][0]
+                    code = Object.entries(state.activeType)[item][1]
+                    out += `<button class="#" onclick="setActiveType('${code}')">${name}</button>`
+                 }  out +=`
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>`
+
+    document.getElementById("editContent").innerHTML = out
+    document.getElementById("typeButton").innerHTML  = `<button class="dropbtn">` + state.activeList[state.activeListIndex].type + `</button>`
 }
 function closeEdit() {
     document.getElementById("edit").style.display = "none"

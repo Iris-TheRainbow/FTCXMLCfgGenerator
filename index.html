@@ -4,8 +4,10 @@
         <script src="scripts/test.js"></script>
         <script src="scripts/download.js"></script>
         <script src="scripts/hardware.js"></script>
-        <script src="scripts/global.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <script src="scripts/state.js"></script>
+        <link rel="stylesheet" href="styles/dropdown.css">
+        <link rel="stylesheet" href="styles/styles.css">
+
     </head>
     <body onload="load()">
         <div class="half">
@@ -17,7 +19,66 @@
             </div>
         </div> 
         <div class="half">
-            AH
+            <div class="config">
+                <div class="ActiveHub">
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="generateHubList()">Select Hub</button>
+                        <div class="dropdown-content">
+                            <span id="hubList"></span>
+                        </div>
+                    </div>
+                    <div style="height: fit-content; padding-left: 20px;">
+                        <P>Active hub: <span id="activeHub"></span></P>
+                    </div>
+                </div>
+                <div>
+                    <div class="hardwareContainer">
+                        <div class="hwheadder">
+                            <h1>Motors</h1>
+                            <button>Add Motor</button>
+                        </div>
+                        <span id="motor"></span>
+                    </div>
+                    <div class="hardwareContainer">
+                        <div class="hwheadder">
+                            <h1>Servos</h1>
+                            <button>Add servo</button>
+                        </div>
+                        <span id="servo"></span>
+                    </div>
+                    <div class="hardwareContainer">
+                        <div class="hwheadder">
+                            <h1>I&sup2;C Devices</h1>
+                            <button>Add I&sup2;C device</button>
+                        </div>
+                        <span id="i2c"></span>
+                    </div>
+                    <div class="hardwareContainer">
+                        <div class="hwheadder">
+                            <h1>Digital Devices</h1>
+                            <button>Add digital device</button>
+                        </div>
+                        <div>
+
+                        </div>
+                        <span id="digital"></span>
+                    </div>
+                    <div class="hardwareContainer">
+                        <div class="hwheadder">
+                            <h1>Analog Devices</h1>
+                            <button>Add analog device</button>
+                        </div>
+                        <span id="analog"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="edit" class="popup-container">
+            <h3>New <span id="type"></span></h2>
+            <div>
+                <span id="editContent"></span>
+            </div>
+            <button onclick="applyChange()">Apply</button><button onclick="closeEdit()">Close</button>
         </div>
     </body>
 </html>

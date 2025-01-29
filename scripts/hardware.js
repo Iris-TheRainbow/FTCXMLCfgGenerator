@@ -1,6 +1,13 @@
+const hubType = {
+    chub: "ControlHub",
+    exhub: "ExpansionHub",
+    shub: "ServoHub"
+}
+
 class Hub{
     constructor(type){
-        this.type = type;
+        this.setType(type);
+        this.childHubs = [];
         this.motors = [];
         this.servos = [];
         this.i2c = [];
@@ -8,12 +15,18 @@ class Hub{
         this.analog = [];
     }
 
-    addChild(){
-        if (this.type = "chub"){
-            return;
+    setType(type){
+        if (Object.values(hubType).includes(type)){
+            this.type = type
+        }else{
+            throw TypeError;
         }
-        if (this.type = "exhub"){
-            return;
+    }
+
+    addChild(type){
+        if (this.type != hubType.shub){
+            this.childHubs.push(new Hub(type));
+            return
         }
         throw TypeError;
     }
@@ -30,12 +43,12 @@ class Hub{
         this.i2c.push(new I2c(type, name, port, bus));
     }
 
-    addDigital(name, port){
-        this.digital.push(new Digital(name, port));
+    addDigital(type, name, port){
+        this.digital.push(new Digital(type, name, port));
     }
 
-    addAnalog(name, port){
-        this.analog.push(new Analog(name, port));
+    addAnalog(type, name, port){
+        this.analog.push(new Analog(type, name, port));
     }
 }
 

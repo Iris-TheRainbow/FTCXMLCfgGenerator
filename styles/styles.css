@@ -1,0 +1,110 @@
+*{
+    color: azure;
+    scrollbar-color: teal darkslategrey;
+    font-family: sans-serif;
+}
+body{
+    background-color: lightslategrey;
+}
+body .half{
+    width: 50%;
+    float: left;
+    margin: 0;
+}
+.xml{
+    margin: 20px;
+    border: 3px solid teal;
+    height: calc(100% - 80px);
+    border-radius: 20px;
+    background-color: darkslategrey;
+    padding: 20px;
+    font-size: 1rem;
+    width: auto;
+}
+.xml p{
+    color: azure;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: calc(100% - 50px);
+}
+.config{
+    margin: 20px;
+    border: 3px solid teal;
+    height: calc(100% - 80px);
+    border-radius: 20px;
+    background-color: darkslategrey;
+    padding: 20px;
+    font-size: 1rem;
+    width: auto;
+}
+.activeHub{
+    display: flex;
+    height: 8%;
+    width: 100%;
+    align-items: center;
+}
+.activeHub p {
+    font-size: 2rem;
+    color: azure;
+}
+.hardwareContainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #024758;
+    border: 1px solid teal;
+    border-radius: 20px;
+}
+.hardwareContainer h1{
+    padding: 5px;
+    margin: 0;
+    color: azure;
+    
+}
+.hardwareContainer div{
+    width: 100%;
+}
+.hardwareContainerTitle{
+    display: inline-block;
+    width: 100%;
+}
+button{
+    margin: 2px;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #024758;
+    border: 1px solid teal;
+    border-radius: 20px;
+    color: azure;
+}
+
+.hwbutton{
+    margin: 2px;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #024758;
+    border: 1px solid teal;
+    border-radius: 20px;
+    color: azure;
+}
+.hwheadder{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: teal;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 100; 
+    display: none;
+}

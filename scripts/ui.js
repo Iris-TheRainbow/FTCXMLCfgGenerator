@@ -126,8 +126,8 @@ function showNew() {
     } out += `
                 </div>
             </div>
-            <input type="text" id="name">
-            <input type="number" id="port">
+            <input type="text" id="name" placeholder="device name">
+            <input type="number" id="port" placeholder="device port">
         </div>
         <div>
         </div>

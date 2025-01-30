@@ -102,12 +102,23 @@ button{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: teal;
+    background-color: #024758;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
+    border: 3px solid teal;
     z-index: 100; 
     display: none;
 }
 input {
-    background-color: grey;
+    background-color: darkslategray;
+    color: azure;
+    border: 1px solid teal;
+    border-radius: 5px;
 }
+
+::placeholder {
+    color: azure;
+    opacity: .75; /* Firefox */
+}
+
+button:hover {background-color: darkslategray;}

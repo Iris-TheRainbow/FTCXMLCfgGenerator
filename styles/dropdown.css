@@ -3,10 +3,12 @@
     background-color: #024758;
     border: 1px solid teal;
     border-radius: 20px;
-    color: white;
+    color: azure;
     font-size: 16px;
     border: none;
     height: 80%;
+    border-radius: 20px;
+    border: 1px solid teal;
   }
   
   /* The container <div> - needed to position the dropdown content */
@@ -19,22 +21,28 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: lightslategrey;
-    width: fit-content
+    background-color: darkslategray;
+    border: 1px solid teal;
+    border-radius: 20px;
+    width: fit-content;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
   
   /* Links inside the dropdown */
   .dropdown-content button {
-    color: black;
+    color: azure;
     text-decoration: none;
     display: block;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content button:hover {background-color: #ddd;}
+  .dropdown-content button:hover {background-color: darkslategray;}
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block;}
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  .dropdown:hover .dropbtn {background-color: lightslategray;}

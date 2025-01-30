@@ -51,6 +51,12 @@ class Hub{
         this.analog.push(new Analog(type, name, port));
     }
 }
+class PlaceHolder{
+    type = ""
+    setType(type){
+        this.type = type;
+    }
+}
 
 class Webcam{
     constructor(name, serial){

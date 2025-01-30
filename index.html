@@ -5,6 +5,7 @@
         <script src="scripts/download.js"></script>
         <script src="scripts/hardware.js"></script>
         <script src="scripts/state.js"></script>
+        <script src="scripts/ui.js"></script>
         <link rel="stylesheet" href="styles/dropdown.css">
         <link rel="stylesheet" href="styles/styles.css">
 
@@ -35,28 +36,28 @@
                     <div class="hardwareContainer">
                         <div class="hwheadder">
                             <h1>Motors</h1>
-                            <button>Add Motor</button>
+                            <button onclick="addMotor()">Add Motor</button>
                         </div>
                         <span id="motor"></span>
                     </div>
                     <div class="hardwareContainer">
                         <div class="hwheadder">
                             <h1>Servos</h1>
-                            <button>Add servo</button>
+                            <button onclick="addServo()">Add servo</button>
                         </div>
                         <span id="servo"></span>
                     </div>
                     <div class="hardwareContainer">
                         <div class="hwheadder">
                             <h1>I&sup2;C Devices</h1>
-                            <button>Add I&sup2;C device</button>
+                            <button onclick="addI2C()">Add I&sup2;C device</button>
                         </div>
                         <span id="i2c"></span>
                     </div>
                     <div class="hardwareContainer">
                         <div class="hwheadder">
                             <h1>Digital Devices</h1>
-                            <button>Add digital device</button>
+                            <button onclick="addDigital()">Add digital device</button>
                         </div>
                         <div>
 
@@ -66,7 +67,7 @@
                     <div class="hardwareContainer">
                         <div class="hwheadder">
                             <h1>Analog Devices</h1>
-                            <button>Add analog device</button>
+                            <button onclick="addAnalog()">Add analog device</button>
                         </div>
                         <span id="analog"></span>
                     </div>
@@ -78,7 +79,7 @@
             <div>
                 <span id="editContent"></span>
             </div>
-            <button onclick="applyChange()">Apply</button><button onclick="closeEdit()">Close</button>
+            <button id="apply" onclick="applyChange()">Apply</button><button onclick="closeEdit()">Close</button>
         </div>
     </body>
 </html>

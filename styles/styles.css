@@ -108,3 +108,6 @@ button{
     z-index: 100; 
     display: none;
 }
+input {
+    background-color: grey;
+}

@@ -12,6 +12,7 @@ function editActiveMotor(index) {
     state.setActiveType(motorType)
     document.getElementById("caption").innerText = "Edit motor: " + hub.motors[index].name
     showEdit()
+    showRemove()
 }
 
 function editActiveServo(index) {
@@ -21,6 +22,7 @@ function editActiveServo(index) {
     state.setActiveType(servoType)
     document.getElementById("caption").innerText = "Edit servo: " + hub.servos[index].name
     showEdit()
+    showRemove()
 }
 
 function editActiveI2C(index) {
@@ -30,6 +32,7 @@ function editActiveI2C(index) {
     state.setActiveType(i2cType)
     document.getElementById("caption").innerHTML = "Edit I&sup2;c: " + hub.i2c[index].name
     showEdit()
+    showRemove()
 }
 function editActiveDigital(index) {
     hub = state.getActiveHub()
@@ -38,6 +41,7 @@ function editActiveDigital(index) {
     state.setActiveType(digitalType)
     document.getElementById("caption").innerText = "Edit digital device: " + hub.digital[index].name
     showEdit()
+    showRemove()
 }
 function editActiveAnalog(index) {
     hub = state.getActiveHub()
@@ -46,6 +50,7 @@ function editActiveAnalog(index) {
     state.setActiveType(analogType)
     document.getElementById("caption").innerText = "Edit analog device: " + hub.analog[index].name
     showEdit()
+    showRemove()
 }
 
 function generateHardwareList(id, list, func) {
@@ -236,6 +241,15 @@ function applyNewAnalog() {
     state.getActiveHub().addAnalog(type, name, port)
     state.updateActiveHub(hub)
     closeEdit()
+}
+function remove(){
+    state.activeList.splice(state.activeListIndex, 1);
+    document.getElementById("remove").style.display = "none"
+    state.updateActiveHub(state.getActiveHub())
+    closeEdit()
+}
+function showRemove(){
+    document.getElementById("remove").style.display = "block"
 }
 
 function addAnalog() {

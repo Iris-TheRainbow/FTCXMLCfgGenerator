@@ -198,7 +198,7 @@ function applyNewI2C() {
     let name = document.getElementById("name").value
     let port = parseInt(document.getElementById("port").value)
     let type = state.activeType
-    state.getActiveHub().addI2C(type, name, port)
+    state.getActiveHub().addI2c(type, name, port)
     state.updateActiveHub(hub)
     closeEdit()
 }
